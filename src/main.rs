@@ -1,15 +1,16 @@
+use std::env;
 use std::fs;
+use std::io;
+use std::io::Read;
 use std::process;
 
 fn main() {
-    let file_path = "hello_world.bf";
+    let file_path = env::args().nth(1).expect("Please pass *.bf input");
     println!("Reading file ...{}", file_path);
     //Read BF file to string prog
     let prog = fs::read_to_string(file_path).expect("Unable to read file");
-    // print string length
-    // println!("{}", file_path.len());
 
-    let mut memory = Vec::new(); // without mut rust throw warning that vector is not mutable -> will read on it
+    let mut memory: Vec<u8> = Vec::new(); // without mut rust throw warning that vector is not mutable -> will read on it
     for _ in 0..40000 {
         memory.push(0);
     }
@@ -72,12 +73,17 @@ fn main() {
                 }
             }
             '.' => {
-                let c = char::from_u32(memory[dp]).unwrap();
-                print!("{}", c);
+                print!("{}", memory[dp] as char);
             }
-            // ',' => {}
+            ',' => {
+                let mut input = [0];
+                io::stdin()
+                    .read_exact(&mut input)
+                    .expect("error reading user input");
+                memory[dp] = input[0];
+            }
             _ => {
-                eprintln!("unexpected character in bf program");
+                eprintln!("unexpected error: character not supported");
                 process::exit(1);
             }
         }
