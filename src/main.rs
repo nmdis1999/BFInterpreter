@@ -27,7 +27,7 @@ fn main() {
 
         match instrchar {
             '>' => {
-                dp += 1; //dp = dp.wrapping_add(1) throws error;
+                dp += 1;
                 if dp >= memory.len() {
                     memory.push(0); //growing memory if needed
                 }
