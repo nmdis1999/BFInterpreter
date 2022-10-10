@@ -9,11 +9,8 @@ fn main() {
     println!("Reading file ...{}", file_path);
     //Read BF file to string prog
     let prog = fs::read_to_string(file_path).expect("Unable to read file");
-
-    let mut memory: Vec<u8> = Vec::new(); // without mut rust throw warning that vector is not mutable -> will read on it
-    for _ in 0..40000 {
-        memory.push(0);
-    }
+    // without mut rust throw warning that vector is not mutable -> will read on it
+    let mut memory: Vec<u8> = vec![0];
     let mut pc = 0;
     let mut dp = 0;
 
