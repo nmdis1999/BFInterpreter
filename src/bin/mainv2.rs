@@ -59,9 +59,6 @@ fn main() {
             }
             '+' => {
                 memory[dp] = memory[dp].wrapping_add(1);
-                if memory[dp] > 255 {
-                    memory[dp] = 0;
-                }
             }
             '-' => {
                 memory[dp] = memory[dp].wrapping_sub(1);
