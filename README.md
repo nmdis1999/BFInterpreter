@@ -1,8 +1,8 @@
 # A very simple BF Interpreter using Rust
 
-<p>Run using: `cargo run -- path/to/file` <br>
-to run in release mode: `cargo run --release` <br>
-to run mainv2: `cargo run --release --bin mainv2` <br></p>
+<p>Run using: <code>cargo run -- path/to/file</code> <br>
+to run in release mode: <code>cargo run --release</code><br>
+to run mainv2: <code>cargo run --release --bin mainv2</code></p>
 
 <p>To check performance:<br>
 for main.rs: `multitime -n 10 -s0 target/release/bf_interpreter path/to/TestFile`<br>
